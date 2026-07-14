@@ -1,33 +1,34 @@
-name: Sync Documents to Backlog
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'docs/**' # docsフォルダ内の変更のみを検知
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2 # 差分（git diff）を取得するために必要
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Run Sync Script
-        env:
-          BACKLOG_API_KEY: ${{ secrets.BACKLOG_API_KEY }}
-          BACKLOG_SPACE_ID: ${{ secrets.BACKLOG_SPACE_ID }}
-          BACKLOG_PROJECT_ID: ${{ secrets.BACKLOG_PROJECT_ID }}
-          BACKLOG_DOMAIN: ${{ secrets.BACKLOG_DOMAIN }}
-        run: python scripts/sync_to_backlog.py
+# name: Sync Documents to Backlog
+# 
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'docs/**' # docsフォルダ内の変更のみを検知
+# 
+# jobs:
+#   sync:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 2 # 差分（git diff）を取得するために必要
+# 
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.x'
+# 
+#       - name: Install dependencies
+#         run: pip install requests
+# 
+#       - name: Run Sync Script
+#         env:
+#           BACKLOG_API_KEY: ${{ secrets.BACKLOG_API_KEY }}
+#           BACKLOG_SPACE_ID: ${{ secrets.BACKLOG_SPACE_ID }}
+#           BACKLOG_PROJECT_ID: ${{ secrets.BACKLOG_PROJECT_ID }}
+#           BACKLOG_DOMAIN: ${{ secrets.BACKLOG_DOMAIN }}
+#         run: python scripts/sync_to_backlog.py
+# 
