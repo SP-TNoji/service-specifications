@@ -30,4 +30,4 @@ jobs:
           BACKLOG_SPACE_ID: ${{ secrets.BACKLOG_SPACE_ID }}
           BACKLOG_PROJECT_ID: ${{ secrets.BACKLOG_PROJECT_ID }}
           BACKLOG_DOMAIN: ${{ secrets.BACKLOG_DOMAIN }}
-        run: python .github/scripts/sync_to_backlog.py
+        run: python scripts/sync_to_backlog.py
